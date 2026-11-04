@@ -14,6 +14,7 @@ Node.js 22.12以上、Rust（検証1.94）、wasm32-wasip1 targetが必要です
 npm ci
 rustup target add wasm32-wasip1
 mkdir -p docs/evidence
+# 初回は下記の公式runner取得・照合・配置を先に実行
 npm run test:all
 ```
 
@@ -22,6 +23,38 @@ npm run test:all
 test:allはSQLite setup/migrations、production build、Node単体/HTTP/DB結合、Rust単体、実Wasm/公式runtime、上限benchmark、型検査です。SDK0.8.1/WASI JSON ABI、CLI5.0.0付属runner9.2.2を使用。400非隣接範囲・規則1000 bytes・配送名100字・10方法×異住所3グループは1,587,624命令、Wasmは256,589 bytesでした。このローカル測定はShopify上での配備・本番動作の証拠ではありません。
 
 ローカル編集UIは[同梱README](../shopify/README.md)のloopback専用demoで確認できます。Shopifyへの反映は無効です。通常の/appはShopify認証が必要です。
+
+## 初回検証に必要な公式Function runner
+
+クリーンな`npm ci`だけではテストが参照するrunnerバイナリは未取得です。以下の手順を**プロジェクトのルートで、npm ciの後、test:allの前**に実行してください。macOS/Linux、curl・gzip・Python3が必要です。実証環境はmacOS arm64です。他のOS/archは下記の公式assetを指定していますが、この公開工程では実行していません。WindowsではNode/Rustも含めWSL2 Linux環境で使用してください。
+
+| OS / architecture | 公式v9.2.2 asset |
+|---|---|
+| macOS arm64 | function-runner-arm-macos-v9.2.2.gz |
+| macOS x86_64 | function-runner-x86_64-macos-v9.2.2.gz |
+| Linux arm64/aarch64 | function-runner-arm-linux-v9.2.2.gz |
+| Linux x86_64 | function-runner-x86_64-linux-v9.2.2.gz |
+
+[Shopify公式Function runner v9.2.2](https://github.com/Shopify/function-runner/releases/tag/v9.2.2)の圧縮assetと同名.sha256を取得・照合し、同梱試験が参照するCLIのbinへ配置します。アカウント/秘密情報/元の開発環境は不要です。npm ciを再実行した場合はこの配置も再実行してください。runnerバイナリや検証ログはソース配布へ含めません。
+
+```sh
+set -eu
+case "$(uname -s)/$(uname -m)" in
+  Darwin/arm64) motoyomi_runner_asset=function-runner-arm-macos-v9.2.2.gz ;;
+  Darwin/x86_64) motoyomi_runner_asset=function-runner-x86_64-macos-v9.2.2.gz ;;
+  Linux/aarch64|Linux/arm64) motoyomi_runner_asset=function-runner-arm-linux-v9.2.2.gz ;;
+  Linux/x86_64) motoyomi_runner_asset=function-runner-x86_64-linux-v9.2.2.gz ;;
+  *) echo 'Use a supported macOS/Linux environment (Windows: WSL2).' >&2; exit 1 ;;
+esac
+mkdir -p .runtime-cache node_modules/@shopify/cli/bin docs/evidence
+curl --fail --location --silent --show-error "https://github.com/Shopify/function-runner/releases/download/v9.2.2/$motoyomi_runner_asset" --output ".runtime-cache/$motoyomi_runner_asset"
+curl --fail --location --silent --show-error "https://github.com/Shopify/function-runner/releases/download/v9.2.2/$motoyomi_runner_asset.sha256" --output ".runtime-cache/$motoyomi_runner_asset.sha256"
+python3 -c 'import hashlib,pathlib,sys; p=pathlib.Path(sys.argv[1]); expected=pathlib.Path(sys.argv[1]+".sha256").read_text().split()[0]; assert hashlib.sha256(p.read_bytes()).hexdigest()==expected, "Runner checksum mismatch"; print("Official runner SHA256: OK")' ".runtime-cache/$motoyomi_runner_asset"
+gzip -dc ".runtime-cache/$motoyomi_runner_asset" > node_modules/@shopify/cli/bin/function-runner-9.2.2
+chmod +x node_modules/@shopify/cli/bin/function-runner-9.2.2
+```
+
+その後`npm run test:all`を実行します。公式CLIの`npm exec shopify app function run -- --path extensions/delivery --input ../../tests/fixtures/island.json --export _start --json --no-input`も必要時に同じrunnerを取得しますが、上記のstandalone手順はapp認証を必要としません。
 
 ## 接続前に残ること
 
