@@ -41,3 +41,5 @@ WordPress版はGPL-2.0-or-later、EmDash版はMIT。配布ソースに各ライ�
 - [EmDash source and tests](emdash/)
 
 These directories match the curated source archives in the beta release.
+
+ソースの検証はWordPressの`tests/`、EmDashの`pnpm test && pnpm typecheck && pnpm build`が対象です。EmDashのruntime/registry用fixtureは公開ソースに含みません。ソースは上記ディレクトリかReleaseの明示的な`*-source.*`を参照してください。GitHub自動生成の「Source code」は今回の製品ソース配布と内容が異なります。
