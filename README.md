@@ -1,58 +1,36 @@
-# Motoyomi Internal Links
+# Motoyomi / モトヨミ
 
-日本語の記事を書く人向けの、無料のWordPress内部リンク候補プラグインです。既存記事の題名・h2〜h4見出しを手がかりに、関連記事と本文中でリンクを張る語句を提案します。
+日本語の記事を書く画面で、過去の記事への内部リンク候補を探す無料プラグインです。題名・見出し・本文中の語句を使い、全角/半角や型番の表記ゆれにも対応します。候補取得では本文を変更せず、外部へ記事を送信しません。
 
-**0.1.0 ベータ**。候補の採否は編集者が判断してください。検索順位や人が評価した的中率を保証するものではありません。
+**2026-11-04 初期ベータ**。候補の採否は編集者が確認してください。AIによる意味検索・回答生成・有料版は未実装です。
 
-Local Japanese internal-link suggestions for WordPress. Free, no account, no external service, no automatic content rewriting.
+| 製品 | ダウンロード | 導入と制限 |
+|---|---|---|
+| WordPress 0.1.0 | [インストール用ZIP](https://github.com/LLL-development/motoyomi/releases/download/beta-2026-11-04/motoyomi-0.1.0.zip) | [WordPressガイド](docs/wordpress.md) |
+| EmDash 1.0.0 | [npm形式tarball](https://github.com/LLL-development/motoyomi/releases/download/beta-2026-11-04/motoyomi-emdash-1.0.0.tgz) | [EmDashガイド](docs/emdash.md) |
 
-## できること
+[リリース・ソース・SHA256チェックサム](https://github.com/LLL-development/motoyomi/releases/tag/beta-2026-11-04)。WordPress.org、npm registry、EmDash registryには未掲載です。Shopify版はこの配布に含みません。
 
-- 日本語bigram、題名・見出しの重み、逆文書頻度による関連記事候補
-- NFKC・英字の大小・型番ハイフンの表記ゆれ対応（AB-1200 / AB1200 / ＡＢ－１２００）
-- 元の表記の語句候補、URLコピー、本文の語句検索
-- 自分自身・既存リンク・非公開/パスワード付き記事・除外パスを候補から除外
-- ブロックエディタの文書パネルと標準クラシックエディタのメタボックス
-- 選んだ関連記事を明示操作で末尾へ追加。候補取得・コピー・語句検索では本文を変更しません
-- 保存時の索引更新と50件ずつの再構築・再開
-- 日本語/英語UI。外部送信・APIキー・アカウント・課金なし
+## どんな記事に使えますか
 
-## インストール
+日本語記事や製品型番を含む記事が対象です。公開済み記事を索引にし、非公開記事・既存リンク・自分自身を候補から除きます。AIによる意味理解は行わないため、似た語句が別の意味で使われる記事では確認が必要です。
 
-1. 配布ZIPをダウンロードします。
-2. WordPressの「プラグイン」→「新規追加」→「プラグインのアップロード」でZIPを選び、有効化します。
-3. 「設定」→「内部リンク」で対象の投稿の種類・除外パスを確認し、索引の完了を待ちます。設定を開いておくとWP-Cronが無効な環境でも処理が進みます。
-4. 記事を開き、文書設定の「関連記事と内部リンク」で「候補を出す」を押します。
-5. 「語句を探す」「リンクをコピー」を使い手動でリンクを張ります。関連記事はチェックして「選んだ関連記事を末尾に追加」を押し、内容を確認して記事を保存します。
+## よくある質問
 
-サイトごとに有効化してください。ネットワークでの一括有効化は対応していません。アンインストール時には、このプラグインの索引・設定・進捗を削除します。
+**アカウントやAPIキーは必要ですか？** 不要です。無料ベータはローカル処理で、外部サービスへ本文を送りません。
 
-## 対応範囲と限界
+**自動で本文を書き換えますか？** 候補取得で書き換えません。WordPressの「選んだ関連記事を末尾に追加」だけは明示操作で編集内容へ追加します。EmDashは手動リンクです。
 
-必要条件はWordPress 6.5以上 / PHP 7.4以上です。Intl・mbstringがない場合も同梱のSymfony polyfillで正規化・文字処理を行います。
+**検索順位や候補精度は保証されますか？** 保証しません。機械fixtureでの動作確認は行いましたが、人が正解を付けた独立の候補精度・無関係率評価と、実利用による成果測定は未実施です。
 
-実環境の検証対象はWordPress 6.5.7・7.1.4 / PHP 8.5.12 / MariaDB 11です。PHP 7.4（Intl・mbstringなし）でも同梱polyfillを使った語処理15件を確認しています。ブロック/クラシックのブラウザ操作はWordPress 7.1.4で確認しました。
+**大規模サイトで使えますか？** まず小さい対象範囲でお試しください。特にEmDashは500件超の範囲を絞ってください。Cloudflare実機CPU制限の検証は未実施です。
 
-本文全体の意味を理解するAI検索、回答生成、外部サーバとの接続、有料版は実装していません。ページビルダー固有の編集画面は対象外です。
+## 画面
 
-200記事・50組の機械fixtureは用意していますが、人が正解を付ける独立の的中率・無関係率評価は未実施です。大規模サイト、全テーマ/プラグイン、Safariの日本語IMEの実機検証は継続課題です。
+公開用サンプル環境の画像です。
 
-## ソースからの検証
+![WordPress設定](https://github.com/LLL-development/motoyomi/releases/download/beta-2026-11-04/wordpress-settings.png)
+![EmDash編集パネル](https://github.com/LLL-development/motoyomi/releases/download/beta-2026-11-04/emdash-editor-panel.png)
 
-`motoyomi/`がそのまま導入可能なプラグインです。PHP依存はvendorに同梱済みで、JSのビルドは不要です。
-
-```sh
-php tests/engine.php
-# 以下は使い捨てのWordPressだけで実行（200記事の作成/削除を伴います）
-wp plugin activate motoyomi
-wp eval-file tests/integration.php
-# サンプル200記事と編集用下書きを残す場合
-wp eval-file tests/seed-demo.php
-wp plugin check motoyomi
-```
-
-## ライセンス・問い合わせ
-
-GPL-2.0-or-later。Symfony polyfillはMITライセンスで、著作権表示とライセンスを同梱しています。
-
-LLL Inc. の既存会社窓口: contact@lx3.cafe。パスワードや非公開記事は送らず、環境と再現手順をお知らせください。
+WordPress版はGPL-2.0-or-later、EmDash版はMIT。配布ソースに各ライセンスを含みます。
+問い合わせ: contact@lx3.cafe。パスワードや非公開記事を送らず、環境と再現手順をお知らせください。
