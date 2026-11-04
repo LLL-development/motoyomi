@@ -1,0 +1,2 @@
+import {defineConfig} from 'vitest/config';
+export default defineConfig({test:{include:['test/engine.test.ts','test/service.test.ts']}});

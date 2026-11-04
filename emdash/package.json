@@ -1,0 +1,49 @@
+{
+  "name": "@motoyomi/emdash",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Local Japanese internal link suggestions for EmDash; no external requests",
+  "license": "MIT",
+  "files": [
+    "dist/index.mjs",
+    "dist/index.d.mts",
+    "dist/plugin.mjs",
+    "README.md",
+    "LICENSE",
+    "docs"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./sandbox": "./dist/plugin.mjs"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "node scripts/build.mjs"
+  },
+  "peerDependencies": {
+    "emdash": ">=1.3.1 <2",
+    "astro": ">=6.0.0-beta.0"
+  },
+  "devDependencies": {
+    "@emdash-cms/blocks": "latest",
+    "@emdash-cms/plugin-cli": "0.13.5",
+    "@emdash-cms/plugin-test": "0.2.11",
+    "@types/node": "^22.0.0",
+    "emdash": "1.4.0",
+    "esbuild": "0.28.2",
+    "typescript": "~5.9.3",
+    "vite": "^8.0.0",
+    "vitest": "^4.1.0"
+  },
+  "author": {
+    "name": "LLL Inc.",
+    "email": "contact@lx3.cafe"
+  },
+  "engines": {
+    "node": ">=22.16.0"
+  }
+}

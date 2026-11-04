@@ -1,0 +1,144 @@
+msgid ""
+msgstr "Project-Id-Version: Motoyomi 0.1.0\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\n"
+
+msgid " Select for related list"
+msgstr " 関連記事リストに追加する"
+
+msgid "Activate Motoyomi separately on each site. Network activation is not supported."
+msgstr "各サイトで個別に有効にしてください。ネットワークでの有効化には対応していません。"
+
+msgid "Add selected to end"
+msgstr "選んだ関連記事を末尾に追加"
+
+msgid "Added to the end. Review and save your article."
+msgstr "末尾に追加しました。内容を確かめて記事を保存してください。"
+
+msgid "Article not found."
+msgstr "記事が見つかりません。"
+
+msgid "Complete"
+msgstr "完了"
+
+msgid "Copy link"
+msgstr "リンクをコピー"
+
+msgid "Copy this URL"
+msgstr "このURLをコピーしてください"
+
+msgid "Could not load index status."
+msgstr "索引の状態を取得できませんでした。"
+
+msgid "Could not retrieve suggestions. Saving is still available."
+msgstr "候補を取得できませんでした。記事の保存はできます。"
+
+msgid "Excluded paths (one path per line; includes descendants)"
+msgstr "除外するパス（1行1つ。配下のページも除外します）"
+
+msgid "Failed"
+msgstr "失敗"
+
+msgid "Find phrase"
+msgstr "語句を探す"
+
+msgid "Find suggestions"
+msgstr "候補を出す"
+
+msgid "Finding suggestions…"
+msgstr "候補を探しています…"
+
+msgid "High"
+msgstr "高"
+
+msgid "Index status"
+msgstr "索引の状態"
+
+msgid "Indexing"
+msgstr "作成中"
+
+msgid "Indexing failed. Resume to retry this batch."
+msgstr "索引の作成に失敗しました。「再開」でこのバッチをやり直してください。"
+
+msgid "Indexing paused. Use Resume indexing."
+msgstr "索引の作成が止まりました。「索引の作成を再開」を押してください。"
+
+msgid "Internal links"
+msgstr "内部リンク"
+
+msgid "Internal links settings"
+msgstr "内部リンクの設定を開く"
+
+msgid "Link copied."
+msgstr "リンクをコピーしました。"
+
+msgid "Low"
+msgstr "低"
+
+msgid "Medium"
+msgstr "中"
+
+msgid "Minimum phrase length"
+msgstr "語句の最小文字数"
+
+msgid "No index"
+msgstr "索引なし"
+
+msgid "No index yet. Open Internal links settings and rebuild the index."
+msgstr "記事の索引をまだ作っていません。設定の「索引を作り直す」を押してください。"
+
+msgid "No suggestions. No articles share title or heading terms."
+msgstr "候補がありません。題名や見出しに同じ語がある記事が見つかりませんでした。"
+
+msgid "Permission denied."
+msgstr "この操作を行う権限がありません。"
+
+msgid "Phrase limit"
+msgstr "語句候補の最大数"
+
+msgid "Phrase not found. Refresh suggestions after editing."
+msgstr "語句が見つかりません。編集後は候補を出し直してください。"
+
+msgid "Phrases to link"
+msgstr "張るとよい語句"
+
+msgid "Post types"
+msgstr "対象の投稿の種類"
+
+msgid "Rebuild index"
+msgstr "索引を作り直す"
+
+msgid "Related article limit"
+msgstr "関連記事の最大数"
+
+msgid "Related articles"
+msgstr "関連記事"
+
+msgid "Related articles and internal links"
+msgstr "関連記事と内部リンク"
+
+msgid "Resume indexing"
+msgstr "索引の作成を再開"
+
+msgid "Save and rebuild"
+msgstr "保存して索引を作り直す"
+
+msgid "Select related articles first."
+msgstr "追加する関連記事を選んでください。"
+
+msgid "Suggestions ready. Content has not changed."
+msgstr "候補を表示しました。本文は変えていません。"
+
+msgid "The index is older than one day. Rebuild if recent articles are missing."
+msgstr "索引は1日以上前のものです。新しい記事が反映されていなければ作り直してください。"
+
+msgid "The matching block is selected. Add the link using the toolbar."
+msgstr "語句を含むブロックを選びました。ツールバーでリンクを付けてください。"
+
+msgid "This version sends nothing to external services. Suggestions compare titles and headings only. Content changes only when you explicitly add related articles."
+msgstr "この版は外部へ何も送りません。題名と見出しだけから候補を探します。本文が変わるのは「末尾に追加」を押したときだけです。"
+
+msgid "Titles and headings only. No external services."
+msgstr "題名と見出しから探します。外部への通信はありません。"
+
+msgid "You cannot edit this article. Sign in and try again."
+msgstr "この記事を編集できません。ログインと編集権限を確かめてください。"
+

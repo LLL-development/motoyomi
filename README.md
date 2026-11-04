@@ -34,3 +34,10 @@
 
 WordPress版はGPL-2.0-or-later、EmDash版はMIT。配布ソースに各ライセンスを含みます。
 問い合わせ: contact@lx3.cafe。パスワードや非公開記事を送らず、環境と再現手順をお知らせください。
+
+## Source / ソース
+
+- [WordPress source and tests](wordpress/)
+- [EmDash source and tests](emdash/)
+
+These directories match the curated source archives in the beta release.
