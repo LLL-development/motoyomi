@@ -1,0 +1,10 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {createHmac,randomBytes} from 'node:crypto';
+import {verifyWebhook} from '../app/webhook-security.server.ts';
+const secret=randomBytes(32).toString('hex');
+const raw=Buffer.from('{"shop_domain":"example.myshopify.com"}');
+const signature=createHmac('sha256',secret).update(raw).digest('base64');
+test('accepts exact raw-body signature',()=>assert.equal(verifyWebhook(raw,signature,secret),true));
+test('rejects changed body, missing/malformed/unequal signatures',()=>{for(const sig of ['', 'bogus', signature.slice(1), signature.replace(/.$/,'a')]) assert.equal(verifyWebhook(raw,sig,secret),false); assert.equal(verifyWebhook(Buffer.concat([raw,Buffer.from(' ')]),signature,secret),false);});
+test('never accepts an empty secret',()=>assert.equal(verifyWebhook(raw,signature,''),false));

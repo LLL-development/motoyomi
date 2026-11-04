@@ -9,7 +9,7 @@
 | WordPress 0.1.0 | [インストール用ZIP](https://github.com/LLL-development/motoyomi/releases/download/beta-2026-11-04/motoyomi-0.1.0.zip) | [WordPressガイド](docs/wordpress.md) |
 | EmDash 1.0.0 | [npm形式tarball](https://github.com/LLL-development/motoyomi/releases/download/beta-2026-11-04/motoyomi-emdash-1.0.0.tgz) | [EmDashガイド](docs/emdash.md) |
 
-[リリース・ソース・SHA256チェックサム](https://github.com/LLL-development/motoyomi/releases/tag/beta-2026-11-04)。WordPress.org、npm registry、EmDash registryには未掲載です。Shopify版はこの配布に含みません。
+[リリース・ソース・SHA256チェックサム](https://github.com/LLL-development/motoyomi/releases/tag/beta-2026-11-04)。WordPress.org、npm registry、EmDash registryには未掲載です。Shopify開発者向けpreviewは末尾の別配布をご覧ください。
 
 ## どんな記事に使えますか
 
@@ -43,3 +43,9 @@ WordPress版はGPL-2.0-or-later、EmDash版はMIT。配布ソースに各ライ�
 These directories match the curated source archives in the beta release.
 
 ソースの検証はWordPressの`tests/`、EmDashの`pnpm test && pnpm typecheck && pnpm build`が対象です。EmDashのruntime/registry用fixtureは公開ソースに含みません。ソースは上記ディレクトリかReleaseの明示的な`*-source.*`を参照してください。GitHub自動生成の「Source code」は今回の製品ソース配布と内容が異なります。
+
+## Shopify developer preview
+
+[Shopify開発者向けソース](shopify/) / [ローカル検証手順と残る接続条件](docs/shopify-development.md) / [開発版ダウンロード](https://github.com/LLL-development/motoyomi/releases/tag/shopify-dev-2026-11-04)。
+
+ローカル検証済みの開発者向けソースです。実Shopify認可・API受理・checkout・PData・公開ホスト・ストア掲載は未検証。無料1ルール・400範囲・配送非表示のみで、課金・有料機能・内蔵離島実表は含みません。

@@ -1,0 +1,8 @@
+[workspace]
+members = ["crates/rules", "extensions/delivery"]
+resolver = "2"
+[profile.release]
+lto = true
+opt-level = "z"
+strip = true
+panic = "abort"

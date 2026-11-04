@@ -1,0 +1,17 @@
+api_version = "2026-10"
+[[extensions]]
+name = "Motoyomi 配送ルール"
+handle = "motoyomi-delivery"
+type = "function"
+description = "日本語の地域別配送方法切替"
+[[extensions.targeting]]
+target = "cart.delivery-options.transform.run"
+input_query = "src/cart_delivery_options_transform_run.graphql"
+export = "_start"
+[extensions.build]
+command = "node ../../scripts/build-function.mjs"
+path = "../../target/wasm32-wasip1/release/motoyomi-delivery.wasm"
+watch = ["src/**/*.rs", "../../crates/rules/src/**/*.rs"]
+[extensions.ui.paths]
+create = "/app"
+details = "/app"

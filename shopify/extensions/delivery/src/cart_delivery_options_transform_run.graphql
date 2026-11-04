@@ -1,0 +1,11 @@
+query Input {
+ cart { deliveryGroups { deliveryAddress { countryCode provinceCode zip } deliveryOptions { handle title } } }
+ deliveryCustomization {
+ rules: metafield(namespace: "$app", key: "rules") { value }
+ zones0: metafield(namespace: "$app", key: "zones_0") { value }
+ zones1: metafield(namespace: "$app", key: "zones_1") { value }
+ zones2: metafield(namespace: "$app", key: "zones_2") { value }
+ zones3: metafield(namespace: "$app", key: "zones_3") { value }
+ zones4: metafield(namespace: "$app", key: "zones_4") { value }
+ }
+}

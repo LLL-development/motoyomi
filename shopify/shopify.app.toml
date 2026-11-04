@@ -1,0 +1,30 @@
+# Bind a real Partner app with `shopify app config link` before deployment.
+client_id = ""
+name = "Motoyomi 配送ルール"
+application_url = "https://shipping.example.invalid"
+embedded = true
+[access_scopes]
+scopes = "write_delivery_customizations"
+[auth]
+redirect_urls = ["https://shipping.example.invalid/auth/callback"]
+[webhooks]
+api_version = "2026-10"
+[[webhooks.subscriptions]]
+uri = "/webhooks/app/uninstalled"
+topics = ["app/uninstalled"]
+[[webhooks.subscriptions]]
+uri = "/webhooks/app/scopes_update"
+topics = ["app/scopes_update"]
+[[webhooks.subscriptions]]
+uri = "/webhooks/compliance"
+compliance_topics = ["customers/data_request", "customers/redact", "shop/redact"]
+
+[delivery_customization.metafields.app.rules]
+type = "json"
+name = "Motoyomi 配送ルール設定"
+access.admin = "merchant_read"
+
+[delivery_customization.metafields.app.zones_0]
+type = "multi_line_text_field"
+name = "Motoyomi 配送地域の範囲"
+access.admin = "merchant_read"
